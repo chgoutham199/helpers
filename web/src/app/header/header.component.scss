@@ -1,0 +1,48 @@
+.header{
+    display: flex;  
+    justify-content: space-between;
+    padding: 30px;
+   .header-first{
+       display: flex;
+       flex-direction: column;
+       .header-first-title{
+           font-size: 25px;
+           font-weight:normal;
+       }
+       .header-first-subtitle{
+           font-size: 13px;
+           font-weight: 500;
+           color:darkgray;
+           margin-top: 5px;
+       }
+   }
+   .header-second{
+         display: flex;
+         column-gap: 20px;
+         justify-content: center;
+         align-items: center;
+         .ph-sign-out{
+                font-size: 30px;
+                color: black;
+                cursor: pointer;
+         }
+  
+   .header-button{
+       gap: 3px;
+       padding: 7px;
+       padding-left: 25px;
+       padding-right: 25px;
+       background-color: rgb(88, 85, 237);
+       border-radius: 5px;
+       color: white;
+       border-color: #ffffff00;
+       font-weight:normal;
+       font-size: 15px;
+       &:hover{
+           background-color: rgb(68, 65, 192);
+           cursor: pointer;
+       }
+   }
+}
+}
+

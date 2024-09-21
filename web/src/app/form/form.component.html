@@ -1,0 +1,129 @@
+<div class="helper-wrapper">
+    <form [formGroup]="addHelperForm" (ngSubmit)="onSubmit()" class="form-wrapper">
+      <div class="header-wrapper">
+        <span class="header-title">Helper Details</span>
+        <span class="header-subtitle">
+          Track, Add & Manage all your helpers at one place
+        </span>
+      </div>
+      <div class="upload">
+        <div class="upload-wrapper" (click)="triggerFileUpload()">
+          <input type="file" accept="image/*" class="upload-input" #fileInput (change)="onFileChange($event)" />
+          <img *ngIf="imageUrl" [src]="imageUrl" alt="Uploaded Image" class="uploaded-image" />
+          <div *ngIf="imageUrl" class="icon-overlay">
+            <i class="ph ph-cloud-arrow-up"></i>
+          </div>
+          <div *ngIf="!imageUrl" class="upload-wrapper-conditon">
+
+            <i class="ph ph-cloud-arrow-up"></i>
+            <span class="upload-text">Upload</span>
+            <span class="upload-text">Photo</span>
+          </div>
+        </div>
+        <p class="upload-head-text">Upload photo * (.png, .jpeg) size 5 mb</p>
+      </div>
+  
+    <div class="form-inputs-wrapper">
+      <div class="form-col-spaces">
+        <label class="form-inputs-upper-text">Type of Service *</label>
+        <select formControlName="type" class="form-inputs" >
+          <option *ngFor="let role of roles" [value]="role">{{ role }}</option>
+        </select>
+        <p class="forms-inputs-bottom-error" *ngIf="addHelperForm.get('type')?.invalid && addHelperForm.get('type')?.touched">This is a required field</p>
+      </div>
+  
+      <div class="form-col-spaces">
+        <label class="form-inputs-upper-text">Organization Name *</label>
+        <select formControlName="organization"  class="form-inputs">
+          <option selected disabled>Select Organization Name</option>
+          <option *ngFor="let org of organizations" [value]="org">{{ org }}</option>
+        </select>
+        <p class="forms-inputs-bottom-error" *ngIf="addHelperForm.get('organization')?.invalid && addHelperForm.get('organization')?.touched">This is a required field</p>
+      </div>
+  
+      <div class="form-col-spaces">
+        <label class="form-inputs-upper-text" for="name">Full Name *</label>
+        <input type="text" id="name" placeholder="Enter Name" formControlName="name"  class="form-inputs" />
+        <p class="forms-inputs-bottom-error" *ngIf="addHelperForm.get('name')?.invalid && addHelperForm.get('name')?.touched">This is a required field</p>
+      </div>
+  
+      <div class="form-col-spaces">
+          <label class="form-inputs-upper-text">Gender *</label>
+        <div class="form-inputs-upper-text"> 
+
+           <div class="radio-spaces" (click)="selectmale()">
+             <input type="radio" formControlName="gender" value="Male" #maleref /> <span>Male</span>
+             
+          </div>
+          <div class="radio-spaces" (click)="selectFemale()">
+
+            <input type="radio" formControlName="gender" value="Female"  #femaleref/><span>Female</span>
+          </div>
+          <div class="radio-spaces" (click)="selectOthers()">
+            <input type="radio" formControlName="gender" value="Others" #othersref /><span>Others</span>
+
+          </div>
+        </div>
+      </div>
+  
+      <div class="form-col-spaces" >
+        <label class="form-inputs-upper-text" for="phone">Phone *</label>
+        <input type="text" placeholder="Phone" id='phone' formControlName="phone"   class="form-inputs"/>
+        <p class="forms-inputs-bottom-error" *ngIf="addHelperForm.get('phone')?.errors?.['required'] && addHelperForm.get('phone')?.touched">This is a required field</p>
+        <p class="forms-inputs-bottom-error" *ngIf="addHelperForm.get('phone')?.errors?.['pattern'] && addHelperForm.get('phone')?.touched">Invalid phone number format</p>
+         </div>
+  
+      <div class="form-col-spaces">
+        <label class="form-inputs-upper-text" for="email">Email *</label>
+        <input type="email" id='email' placeholder="Email" formControlName="email"  class="form-inputs" />
+        <p class="forms-inputs-bottom-error" *ngIf="addHelperForm.get('email')?.errors?.['required'] && addHelperForm.get('email')?.touched">This is a required field</p>
+  <p class="forms-inputs-bottom-error" *ngIf="addHelperForm.get('email')?.errors?.['email'] && addHelperForm.get('email')?.touched">Invalid email format</p>
+  <p class="forms-inputs-bottom-error" *ngIf="addHelperForm.get('email')?.errors?.['pattern'] && addHelperForm.get('email')?.touched">Invalid email pattern</p>
+ </div>
+  
+      <div class="form-col-spaces">
+        <label class="form-inputs-upper-text" >Choose Vehicle Type</label>
+        <select formControlName="vehicleType"  class="form-inputs" >
+          <option  selected >None</option>
+          <option value="Auto">Auto</option>
+          <option value="Car">Car</option>
+          <option value="Bike">Bike</option>
+        </select>
+      </div>
+  
+      <div *ngIf="addHelperForm.get('vehicleType')?.value !== 'None'" class="form-col-spaces">
+        <label class="form-inputs-upper-text">Vehicle Number *</label>
+        <input type="text" placeholder="Vehicle Number" formControlName="vehicleNumber"   class="form-inputs"/>
+        <p class="forms-inputs-bottom-error" *ngIf="addHelperForm.get('vehicleNumber')?.invalid && addHelperForm.get('vehicleNumber')?.touched">This is a required field</p>
+      </div>
+  
+      <div class="form-col-spaces">
+        <label class="form-inputs-upper-text">KYC Document *</label>
+        <div class="kyc-div" (click)="triggerKycUpload()">
+          <input type="file" accept="application/pdf" formControlName="document" class="kyc-input" #kycInput (change)="onKycFileChange($event)" />
+          <span *ngIf="!kycFile">+</span>
+          <div *ngIf="kycFile" class="kyc-file-info">
+            <i class="material-icons">{{ kycFileIcon }}</i>
+            <span class="kyc-div-text">{{ kycFileName }}</span>
+            <span class="kyc-div-text">{{ kycFileSize }} MB</span>
+          </div>
+        </div>
+      </div>
+
+
+    </div>
+  
+    <br />
+    <p *ngIf="erros" class="forms-submit-error">{{erros}}</p>
+    <div class="button-div">
+       <button class="back-button" (click)="handleBack()"><i class="ph ph-caret-left"></i><span>Back</span></button>
+        @if (!isEditMode  ) {
+          <button type="submit" [ngClass]="{'valid-button': addHelperForm.valid, 'invalid-button': !addHelperForm.valid}" ><i class="ph ph-plus"> </i><span>Add Helper</span></button>
+
+        }
+        @else {
+          <button type="submit"  [ngClass]="isFormChanged() && addHelperForm.valid  ? 'valid-button' : 'invalid-button'" [disabled]="!isFormChanged() || !addHelperForm.valid"> <span>Save</span> <i class="ph ph-floppy-disk-back"></i></button>
+        }
+    </div>
+  </form>
+</div>

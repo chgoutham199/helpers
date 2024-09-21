@@ -1,0 +1,23 @@
+.view-helpers {
+  display: flex;
+  justify-content: center; 
+  align-items: center;
+  column-gap: 20px;
+    .left-pane {
+      
+      border: 1px solid #EAECF0;
+      border-radius: 15px;
+      width: 45%;
+      max-width: 350px;
+    }
+    .right-pane {
+      height: calc(100vh - 150px);
+      overflow-y: scroll;
+    background-color: #FCFCFD;
+    padding: 24px;
+    width: 100%;
+    border: 1PX solid #EAECF0;
+    max-width: 800px;
+    border-radius: 8px;
+    }
+  }

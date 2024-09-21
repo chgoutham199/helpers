@@ -1,0 +1,43 @@
+.offline-wrapper{
+    display: flex;  
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 100%;
+    background-color: #f5f5f5;
+    gap: 30px;
+    
+    .wifi-icon-wrapper{
+        width:95px;
+        height: 95px;
+        background-color: #EEF0FE;
+        border-radius: 50%;
+        border: 2px solid #E0EAFF;
+        display: grid;
+        place-items: center;
+         .ph-wifi-slash{
+                font-size: 50px;
+                color: #5865F1;
+         }
+    }
+    .offline-titles-wrapper{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 15px;
+        font-weight: 300;
+        margin-bottom: 30px;
+        .offline-title{
+          font-size:16px;
+          color:#101828;
+        }
+        .offline-sub-title{
+            font-size:13px;
+            color:#98A2B3;
+        }
+        
+    }
+
+}

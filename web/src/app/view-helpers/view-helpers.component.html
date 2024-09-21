@@ -1,0 +1,8 @@
+<div class="view-helpers">
+  <div class="left-pane">
+    <app-helpers-list (selectHelper)="onSelectHelper($event)" [deletedHelper]="deletedHelperId" ></app-helpers-list>
+  </div>
+  <div class="right-pane">
+    <app-helpers-details [helper]="selectedHelper" (helperDeleted)="onHelperDeleted($event)"></app-helpers-details>
+  </div>
+</div>

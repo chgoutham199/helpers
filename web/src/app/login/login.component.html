@@ -1,0 +1,62 @@
+<div class="login-wrapper">
+  <div class="login-form-wrapper">
+    <div class="login-head">
+      <span class="login-heading">Welcome!</span>
+      <span class="login-sub-heading">Please enter your details to login</span>
+    </div>
+    <form
+      class="form-wrapper"
+      [formGroup]="loginFrom"
+      (ngSubmit)="handleSubmit()"
+    >
+      <div class="form-inputs-wrapper">
+        <div class="form-col-spaces">
+          <label for="email" class="form-inputs-upper-text">Email *</label>
+          <input
+            id="email"
+            class="form-inputs"
+            formControlName="email"
+            type="email"
+            placeholder="Enter your email"
+          />
+          <p
+            class="forms-inputs-bottom-error"
+            *ngIf="loginFrom.get('email')?.errors?.['required'] && loginFrom.get('email')?.touched"
+          >
+            This is a required field
+          </p>
+          <p
+            class="forms-inputs-bottom-error"
+            *ngIf="loginFrom.get('email')?.errors?.['email'] && loginFrom.get('email')?.touched"
+          >
+            Invalid email format
+          </p>
+          <p
+            class="forms-inputs-bottom-error"
+            *ngIf="loginFrom.get('email')?.errors?.['pattern'] && loginFrom.get('email')?.touched"
+          >
+            Invalid email pattern
+          </p>
+        </div>
+
+        <div class="form-col-spaces">
+          <label for="password" class="form-inputs-upper-text"
+            >Password *</label
+          >
+          <input
+            id="password"
+            formControlName="password"
+            class="form-inputs"
+            type="password"
+            placeholder="Enter your password"
+          />
+          <p class="forms-inputs-bottom-error" *ngIf="loginFrom.get('password')?.invalid && loginFrom.get('password')?.touched">This is a required field</p>
+        </div>
+        <div class="button-div">
+          <button [disabled]="!loginFrom.valid" type="submit">Login</button>
+          <p *ngIf="errorMessage!=''" class="error">{{errorMessage}}</p>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

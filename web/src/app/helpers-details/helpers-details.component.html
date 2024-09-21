@@ -1,0 +1,126 @@
+@if (helper) {
+    <div class="contact-wrapper">
+      <div class="contact-head">
+        <div class="contact-hero">
+          <img [src]="'data:image/jpg;base64,' + helper.photo" alt="{{ helper.name }}" class="contact-image" />
+         <div class="contact-titles">
+          <span class="contact-title">{{helper.name}}</span>
+          <span class="contact-subtitle">{{helper.type}}</span>
+         </div>
+        </div>
+        <div class="contact-icons">
+          <div class="icons-div" (click)="handleEditClick()">
+            <i class="ph ph-pencil-simple"></i>
+
+          </div>
+          <div class="icons-div" (click)="togglePop()">
+            <i class="ph ph-trash"></i>
+          </div>
+        </div>
+      </div >
+
+      <div class="popup-overlay" *ngIf="toggle">
+        <div class="popup-content">
+          <div class="close-button">
+            
+            <i class="ph ph-x" (click)="togglePop()"></i>
+          </div>
+          <div  class="close-content">
+            <i class="ph ph-warning" (click)="togglePop()"></i>
+            <span class="close-title"> Delete <span class="close-override">{{helper.name}} ({{helper.type}} )</span></span>
+            <span class="close-subtitle">You can't undo this action.</span>
+          </div>
+          <hr>
+          <div class="close-confirm">
+            <button (click)="togglePop()" class="close-decision-button" style="background-color: white; color: black">Cancel</button>
+            <button (click)="deleteHelper(helper._id)" class="close-decision-button" style="background-color: #F04438"><i class="ph ph-trash"></i> Delete</button>
+
+          </div>
+        </div>
+      </div>
+
+      
+      <div class="contact-headers">
+        EMPLOYEE  ID
+        <div class="line"></div>
+      </div>
+      <div class="contact-details-wrapper">
+         <div class="contact-details">
+          <span class="contact-deatils-key">Employee Code</span>
+          <span class="contact-details-value"> {{helper.employeeCode}}</span>
+
+         </div>
+      </div>
+      <div class="contact-headers">
+       personal details
+        <div class="line"></div>
+         </div>
+      <div class="contact-details-wrapper">
+        <div class="contact-details">
+          <span class="contact-deatils-key">Gender</span>
+          <span class="contact-details-value"> {{helper.gender}}</span>
+
+         </div>
+         <div class="contact-details">
+          <span class="contact-deatils-key">Mobile No</span>
+          <span class="contact-details-value"> {{helper.phone}}</span>
+
+         </div>
+         <div class="contact-details">
+          <span class="contact-deatils-key">Email ID</span>
+          <span class="contact-details-value"> {{helper.email}}</span>
+
+         </div>
+         <div class="contact-details">
+          <span class="contact-deatils-key">KYC Document</span>
+          <a (click)="openDocumentInNewTab(helper.document)" class="anchor"><i class="ph ph-eye"></i> View</a>
+         </div>
+
+         <div class="contact-headers">
+          service details
+          <div class="line"></div>
+        </div>
+  
+        <div class="contact-details">
+          <span class="contact-deatils-key">Type</span>
+          <span class="contact-details-value"> {{helper.type}}</span>
+  
+         </div>
+        <div class="contact-details">
+          <span class="contact-deatils-key">Organization</span>
+          <span class="contact-details-value"> {{helper.organization}}</span>
+  
+         </div>
+        <div class="contact-details">
+          <span class="contact-deatils-key">Joined on</span>
+          <span class="contact-details-value"> {{helper.createdAt|date: 'dd, MMM, yyyy' }}</span>
+  
+         </div>
+         @if(helper.vehicleType!='None'){
+         <div class="contact-headers">
+         Vehicle details
+          <div class="line"></div>
+        </div>
+      
+
+       
+        <div class="contact-details">
+          <span class="contact-deatils-key">Vehicle Type</span>
+          <span class="contact-details-value"> {{helper.vehicleType}}</span>
+  
+         </div><div class="contact-details">
+          <span class="contact-deatils-key">vehicleNumber</span>
+          <span class="contact-details-value"> {{helper.vehicleNumber}}</span>
+  
+         </div>
+        }
+        </div>
+
+
+     
+       
+    </div>
+
+
+
+}

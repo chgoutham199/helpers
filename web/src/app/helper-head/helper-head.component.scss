@@ -1,0 +1,13 @@
+.head-wrapper{
+    display: flex;
+    padding: 30px;
+    gap: 10px;
+    color: #0F0E17;
+    font-size: 22px;
+    cursor: pointer;
+    .ph-caret-left{
+        cursor: pointer;
+        font-size: 25px;
+    
+    }
+}

@@ -1,0 +1,86 @@
+
+
+<div class="helper-list" 
+  >
+  <div class="search-wrapper">
+    <input type="text" placeholder="Search" [(ngModel)]="searchQuery" (input)="onSearch()"  class="search-input"/>
+    <i class="ph ph-magnifying-glass"></i>
+    <div class="filter-icon" (click)="toggleFilter()">
+      <i class="ph ph-funnel"></i>      
+
+    </div>  
+      
+  </div>
+  @if (filterOpen) {
+
+    <div class="filter-overlay">
+      <div class="filter-section">
+
+      
+    <div  class="filter-sub-section">
+
+   
+     <div class="filter-group">
+       <label class="filter-group-title">Organization</label>
+       <div *ngFor="let org of organizations" class="filter-group-items">
+         <input type="checkbox" [(ngModel)]="org.selected">{{ org.label }}
+       </div>
+     </div>
+     <div class="filter-group">
+       <label class="filter-group-title">Type</label>
+       <div *ngFor="let type of types" class="filter-group-items">
+         <input type="checkbox" [(ngModel)]="type.selected">{{ type.label }}
+       </div>
+     </div>
+     <div class="filter-group">
+       <label class="filter-group-title">Gender</label>
+       <div *ngFor="let gender of genders" class="filter-group-items">
+         <input type="checkbox" [(ngModel)]="gender.selected">{{ gender.label }}
+       </div>
+     </div>
+     <div class="filter-group">
+       <label class="filter-group-title">Vehicle Type</label>
+       <div *ngFor="let vehicleType of vehicleTypes" class="filter-group-items">
+         <input type="checkbox" [(ngModel)]="vehicleType.selected">{{ vehicleType.label }}
+       </div>
+     </div>
+
+    </div>
+      <div class="buttons-div">
+         <button (click)="resetFilters()" class="button-reset">
+             Reset
+         </button>
+         <button (click)="applyFilters()" class="button-apply">
+           Apply
+         </button>
+      </div>
+    </div>
+    </div>
+
+
+
+}
+       
+  <div 
+  infiniteScroll
+      [infiniteScrollDistance]="2"
+     [infiniteScrollThrottle]="50"
+     (scrolled)="onScroll()"
+     [fromRoot]="true"
+     [infiniteScrollContainer]="selector"
+  >
+      @for (helper of filteredHelpers; track $index) {
+        <div class="helper-list-wrapper" [class.selected]="isSelected(helper)" >
+          <div class="helper-list-item" (click)="onSelect(helper)">
+            <img [src]="'data:image/jpg;base64,' + helper.photo" alt="{{ helper.name }}" />
+            <div class="helper-list-text">
+              <span class="helper-list-heading">{{ helper.name }}</span>
+              <span class="helper-list-subheading">{{ helper.type }}</span>
+            </div>
+          </div>
+        </div>
+      
+        }
+      </div>
+  </div>
+     

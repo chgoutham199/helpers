@@ -1,0 +1,102 @@
+.login-wrapper{
+    width: 100vw;
+    height: 100vh;
+    background-color: #e9eaf1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap:30px;
+    .login-form-wrapper{
+        background-color: white;
+        padding: 30px;
+        height: 100%;
+        width: 100%;
+        max-height: 420px;
+        max-width: 450px;
+        border-radius: 16px;
+        box-shadow: 0 0 10px 0 rgba(0,0,0,0.1);
+        .form-inputs-wrapper {
+            margin-top: 40px;
+            display: flex;
+            flex-direction: column;
+            font-weight: lighter;
+            row-gap: 18px;
+            .form-inputs-upper-text {
+             
+              font-size: 13px;
+              font-weight: 500; 
+              display: flex;
+              column-gap: 5px;
+            }
+            .forms-inputs-bottom-error {
+              color: red;
+              font-size: 12px;
+              position: absolute;
+              bottom: -34px;
+            }
+            .form-col-spaces {
+              display: flex;
+              flex-direction: column;
+              position: relative;
+              margin-bottom: 5px;
+              gap: 4px;
+              .form-inputs{
+                 border-radius: 5px;
+                 padding: 8px 10px;
+                 border: 1px solid #D0D5DD;
+        
+              }
+             .form-inputs:focus {
+                outline: none;
+                background-color: #eef0fe;
+              }
+            }
+        }
+         .login-head{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap:6px;
+            flex-direction: column;
+            .login-heading{
+                font-size: 24px;
+                font-weight: 500;
+                color: black
+            }
+            .login-sub-heading{
+                font-size: 14px;
+                color: black;
+            }
+         }
+        }
+    }
+    .button-div{
+        display: flex;
+        width: 100%;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding-top: 40px;
+        button{
+            width: 100%;
+            background-color: black;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: 500;
+            transition: all 0.3s;
+            &:hover{
+                background-color: #20202399;
+            }
+        }
+        .error{
+            color: red;
+            font-size: 12px;
+            position:absolute;
+            margin-top: 40px;
+            padding-top: 40px;
+        }
+    }
