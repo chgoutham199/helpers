@@ -40,7 +40,7 @@ export class FormComponent implements OnInit {
 
   ngOnInit(): void {
     this.addHelperForm = this.fb.group({
-      photo: [null, Validators.required],
+      photo : [null, Validators.required],
       type: ['', Validators.required],
       organization: ['', Validators.required],
       name: ['', Validators.required],
@@ -188,7 +188,7 @@ export class FormComponent implements OnInit {
   onSubmit(): void {
     if (this.addHelperForm.valid) {
       const formData = new FormData();
-     if(this.addHelperForm.get('photo')?.value!=this.initialdata.photo) {
+     if(this.addHelperForm.get('photo')?.value!=this.initialdata?.photo) {
        formData.append('photo', this.addHelperForm.get('photo')?.value);
        
      } 
